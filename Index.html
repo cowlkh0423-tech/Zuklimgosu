@@ -1,39 +1,131 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>죽림 생존자</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>죽림생존</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
     <div id="game">
+
+        <!-- 게임 화면 -->
+
         <canvas id="gameCanvas"></canvas>
 
+
+        <!-- 게임 정보 -->
+
         <div id="ui">
-            <div id="hp">HP: 100</div>
-            <div id="level">LEVEL: 1</div>
-            <div id="time">TIME: 0</div>
+
+            <div id="survivalBox">
+
+                <span class="label">
+                    생존시간
+                </span>
+
+                <span id="time">
+                    0.00
+                </span>
+
+            </div>
+
+
+            <div id="arrowBox">
+
+                <span class="label">
+                    화살
+                </span>
+
+                <span id="level">
+                    0
+                </span>
+
+            </div>
+
         </div>
+
+
+        <!-- 시작 화면 -->
 
         <div id="startScreen">
-            <h1>죽림 생존자</h1>
-            <p>몰려오는 적을 피해 살아남아라!</p>
-            <button id="startButton">GAME START</button>
+
+            <div class="titleBox">
+
+                <div class="titleSmall">
+                    대나무 숲에서 살아남아라
+                </div>
+
+                <h1>
+                    죽림생존
+                </h1>
+
+                <div class="titleLine"></div>
+
+                <p>
+                    사방에서 날아오는 화살을 피해
+                    최대한 오래 살아남으세요.
+                </p>
+
+                <p class="controlText">
+                    방향키 ↑ ↓ ← →
+                </p>
+
+
+                <button id="startButton">
+                    게임 시작
+                </button>
+
+            </div>
+
         </div>
 
+
+        <!-- 게임 오버 -->
+
         <div id="gameOverScreen">
-            <h1>GAME OVER</h1>
-            <p id="finalTime">생존 시간: 0초</p>
-            <button id="restartButton">RESTART</button>
+
+            <div class="gameOverBox">
+
+                <div class="gameOverTitle">
+                    GAME OVER
+                </div>
+
+                <div class="gameOverLine"></div>
+
+                <p id="finalTime">
+                    생존 시간 : 0.00초
+                </p>
+
+
+                <button id="restartButton">
+                    다시하기
+                </button>
+
+            </div>
+
         </div>
+
     </div>
+
 
     <script src="main.js"></script>
 
 </body>
+
 </html>
