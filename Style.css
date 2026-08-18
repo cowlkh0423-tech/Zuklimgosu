@@ -1,99 +1,417 @@
 * {
     box-sizing: border-box;
+
     margin: 0;
     padding: 0;
 }
 
+
+html,
 body {
-    background: #111;
+
+    width: 100%;
+    height: 100%;
+
     overflow: hidden;
-    font-family: Arial, sans-serif;
+
+    background: #102414;
+
+    font-family:
+        "Noto Sans KR",
+        sans-serif;
 }
+
 
 #game {
+
     position: relative;
+
     width: 100vw;
     height: 100vh;
+
     overflow: hidden;
-    background: #18251b;
+
+    background: #102414;
 }
+
 
 #gameCanvas {
+
     position: absolute;
+
     left: 0;
     top: 0;
+
     width: 100%;
     height: 100%;
 }
 
-/* 게임 UI */
+
+/* =====================================
+   게임 UI
+===================================== */
+
 #ui {
+
     position: absolute;
+
     top: 20px;
-    left: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
 
     display: flex;
-    gap: 20px;
 
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+    gap: 12px;
 
     z-index: 10;
+
+    pointer-events: none;
 }
 
-/* 시작 화면 */
+
+#survivalBox,
+#arrowBox {
+
+    min-width: 130px;
+
+    padding: 8px 18px;
+
+    border: 1px solid
+        rgba(220, 210, 170, 0.45);
+
+    border-radius: 5px;
+
+    background:
+        rgba(15, 25, 16, 0.65);
+
+    backdrop-filter: blur(3px);
+
+    color: #eee5c9;
+
+    text-align: center;
+}
+
+
+.label {
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    font-size: 11px;
+
+    color: #a9a58f;
+}
+
+
+#time,
+#level {
+
+    font-family: monospace;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================
+   시작 화면
+===================================== */
+
 #startScreen,
 #gameOverScreen {
+
     position: absolute;
+
+    left: 0;
+    top: 0;
 
     width: 100%;
     height: 100%;
 
     display: flex;
-    flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
-    background: rgba(0, 0, 0, 0.75);
-
-    color: white;
-
     z-index: 20;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(45, 70, 45, 0.35),
+            rgba(5, 12, 7, 0.93)
+        );
 }
 
-#startScreen h1,
-#gameOverScreen h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
+
+.titleBox {
+
+    width: min(90%, 520px);
+
+    padding: 55px 40px;
+
+    text-align: center;
+
+    color: #eee5c9;
+
+    background:
+        rgba(13, 25, 15, 0.8);
+
+    border:
+
+        1px solid
+        rgba(220, 210, 170, 0.35);
+
+    border-radius: 4px;
+
+    box-shadow:
+
+        0 20px 60px
+        rgba(0, 0, 0, 0.5);
 }
 
-#startScreen p,
-#gameOverScreen p {
-    font-size: 20px;
-    margin-bottom: 30px;
+
+.titleSmall {
+
+    margin-bottom: 12px;
+
+    font-size: 15px;
+
+    letter-spacing: 5px;
+
+    color: #aaa68d;
 }
+
+
+h1 {
+
+    font-size: clamp(
+        50px,
+        10vw,
+        90px
+    );
+
+    font-weight: 500;
+
+    letter-spacing: 14px;
+
+    text-indent: 14px;
+
+    color: #e7ddba;
+
+    text-shadow:
+
+        0 3px 10px
+        rgba(0, 0, 0, 0.8);
+}
+
+
+.titleLine {
+
+    width: 80px;
+
+    height: 1px;
+
+    margin: 25px auto;
+
+    background: #b8a96c;
+}
+
+
+.titleBox p {
+
+    line-height: 1.8;
+
+    color: #aaa995;
+
+    font-size: 14px;
+}
+
+
+.controlText {
+
+    margin-top: 15px;
+
+    color: #ddd3aa !important;
+
+    letter-spacing: 3px;
+
+    font-size: 16px !important;
+}
+
+
+/* =====================================
+   버튼
+===================================== */
 
 button {
-    padding: 15px 40px;
 
-    border: none;
-    border-radius: 8px;
+    margin-top: 35px;
 
-    background: #d8b45a;
-    color: #111;
+    padding: 13px 50px;
 
-    font-size: 20px;
-    font-weight: bold;
+    border:
+
+        1px solid
+        rgba(220, 210, 170, 0.6);
+
+    border-radius: 3px;
+
+    background:
+
+        rgba(30, 50, 32, 0.8);
+
+    color: #eee5c9;
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
 
     cursor: pointer;
+
+    transition:
+
+        background 0.2s,
+        transform 0.2s,
+        border-color 0.2s;
 }
+
 
 button:hover {
-    transform: scale(1.05);
+
+    background:
+        rgba(65, 90, 65, 0.9);
+
+    border-color: #ddd2a2;
+
+    transform: translateY(-2px);
 }
 
-/* 게임 오버 화면은 처음에는 숨김 */
+
+button:active {
+
+    transform:
+        translateY(1px);
+}
+
+
+/* =====================================
+   게임 오버
+===================================== */
+
 #gameOverScreen {
+
     display: none;
+}
+
+
+.gameOverBox {
+
+    width: min(90%, 460px);
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    color: #eee5c9;
+
+    background:
+        rgba(13, 25, 15, 0.9);
+
+    border:
+
+        1px solid
+        rgba(220, 210, 170, 0.35);
+
+    border-radius: 4px;
+}
+
+
+.gameOverTitle {
+
+    font-size: 42px;
+
+    letter-spacing: 8px;
+
+    color: #ddd3aa;
+}
+
+
+.gameOverLine {
+
+    width: 60px;
+
+    height: 1px;
+
+    margin: 20px auto 25px;
+
+    background: #a9985c;
+}
+
+
+#finalTime {
+
+    font-family: monospace;
+
+    font-size: 20px;
+
+    color: #eee5c9;
+}
+
+
+/* =====================================
+   모바일
+===================================== */
+
+@media (max-width: 600px) {
+
+    #ui {
+
+        top: 10px;
+
+        gap: 6px;
+    }
+
+
+    #survivalBox,
+    #arrowBox {
+
+        min-width: 105px;
+
+        padding: 6px 12px;
+    }
+
+
+    #time,
+    #level {
+
+        font-size: 16px;
+    }
+
+
+    .titleBox {
+
+        padding: 40px 25px;
+    }
+
+
+    h1 {
+
+        font-size: 50px;
+
+        letter-spacing: 8px;
+
+        text-indent: 8px;
+    }
+
+
+    .titleSmall {
+
+        letter-spacing: 3px;
+    }
 }
