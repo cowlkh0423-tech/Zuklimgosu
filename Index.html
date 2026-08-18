@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>죽림 생존자</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="game">
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="ui">
+            <div id="hp">HP: 100</div>
+            <div id="level">LEVEL: 1</div>
+            <div id="time">TIME: 0</div>
+        </div>
+
+        <div id="startScreen">
+            <h1>죽림 생존자</h1>
+            <p>몰려오는 적을 피해 살아남아라!</p>
+            <button id="startButton">GAME START</button>
+        </div>
+
+        <div id="gameOverScreen">
+            <h1>GAME OVER</h1>
+            <p id="finalTime">생존 시간: 0초</p>
+            <button id="restartButton">RESTART</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
